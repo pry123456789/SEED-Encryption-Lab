@@ -1,0 +1,3 @@
+# Requirements for cluster_dpc_knn
+
+torch>=1.10.0
