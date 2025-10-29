@@ -37,3 +37,39 @@ $ docker-compose down
 ```
 
 This setup ensures the environment is properly built, launched, and cleaned up afterward.
+
+## Additional Utilities
+
+### Density Peak Clustering (DPC) with K-Nearest Neighbors
+
+This repository also includes a `cluster_dpc_knn` function that implements density-based clustering using k-nearest neighbors. While not part of the encryption lab, this utility function can be useful for various machine learning tasks.
+
+**Documentation**:
+- [English Documentation](CLUSTER_DPC_README.md)
+- [中文文档 (Chinese Documentation)](CLUSTER_DPC_DOCUMENTATION_CN.md)
+
+**Files**:
+- `cluster_dpc.py`: Main implementation
+- `test_cluster_dpc.py`: Test suite
+- `CLUSTER_DPC_README.md`: Comprehensive English documentation
+- `CLUSTER_DPC_DOCUMENTATION_CN.md`: Comprehensive Chinese documentation
+
+**Quick Start**:
+```python
+import torch
+from cluster_dpc import cluster_dpc_knn
+
+# Create sample data
+x = torch.randn(2, 100, 64)  # 2 batches, 100 points, 64 dimensions
+
+# Perform clustering
+index_down, idx_cluster = cluster_dpc_knn(x, cluster_num=10, k=20)
+
+# index_down: indices of cluster centers (shape: 2, 10)
+# idx_cluster: cluster assignment for each point (shape: 2, 100)
+```
+
+**Run Tests**:
+```bash
+python test_cluster_dpc.py
+```
